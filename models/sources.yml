@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    database: CAPSTONE
+    schema: RAW
+    tables:
+      - name: sleeve_characteristics
+      - name: security_allocation
+      - name: sleeve_performance
+      - name: benchmark_performance
+      - name: equity_region
