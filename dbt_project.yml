@@ -44,3 +44,12 @@ models:
     gold:
       +schema: GOLD
 
+seeds:
+  capstone:   # <-- replace with your actual project name
+    +schema: BRONZE
+
+snapshots: 
+  capstone:
+    +schema: SNAPSHOTS
+
+

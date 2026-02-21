@@ -4,7 +4,12 @@ with base as (
         trim(sleeve_id) as sleeve_id,
         trim(sleeve_name) as sleeve_name,
         trim(sleeve_type) as sleeve_type,
-        cast(no_of_securities as integer) as no_of_securities,
+        case
+        when sleeve_id = 'B01' then 500
+        when sleeve_id = 'B02' then 20000
+        when sleeve_id = 'B03' then 1500
+        else no_of_securities
+        end as no_of_securities,
         cast(yield as float) as yield,
         cast(price_to_earnings as float) as price_to_earnings,
         cast(price_to_sales as float) as price_to_sales,
