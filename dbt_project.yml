@@ -41,8 +41,10 @@ models:
       +schema: BRONZE
     silver:
       +schema: SILVER
+      +materialized: table
     gold:
       +schema: GOLD
+      +materialized: table
 
 seeds:
   capstone:   # <-- replace with your actual project name
