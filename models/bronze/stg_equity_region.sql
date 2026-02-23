@@ -27,20 +27,7 @@ standardized as (
         percentage_allotted
     from base
 
-),
-
-normalized as (
-
-    select
-        sleeve_id,
-        sleeve_name,
-        region,
-        percentage_allotted /
-        sum(percentage_allotted) over (partition by sleeve_id) * 100
-            as percentage_allotted
-    from standardized
-
 )
 
 select distinct *
-from normalized
+from standardized

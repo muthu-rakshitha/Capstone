@@ -17,22 +17,7 @@ dedup as (
     select distinct *
     from base
 
-),
-
-normalized as (
-
-    select
-        sleeve_id,
-        sleeve_name,
-        sector,
-        ticker,
-        updated_at,
-        weight /
-        sum(weight) over (partition by sleeve_id, updated_at) * 100
-            as weight
-    from dedup
-
 )
 
 select *
-from normalized
+from dedup

@@ -23,5 +23,5 @@ select
     s.sales_growth_3y,
     s.fcf_growth_3y
 from sleeves s
-left join mapping m
+right join mapping m
     on s.sleeve_id = m.sleeve_id
