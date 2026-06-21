@@ -1,0 +1,149 @@
+version: 2
+
+models:
+
+  - name: stg_equity_region
+    columns:
+      - name: region
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - North America
+                  - Europe
+                  - Asia Pacific
+                  - Emerging Market
+              
+
+
+  - name: int_sleeve_mapped
+    description: Cleaned sleeve metadata with category mapping
+    columns:
+      - name: sleeve_id
+        tests:
+          - not_null
+          - unique
+
+  - name: int_performance_final
+    columns:
+
+      - name: sleeve_id
+        tests:
+          - not_null
+
+      - name: month_date
+        tests:
+          - not_null
+
+      - name: sleeve_return
+        tests:
+          - not_null
+
+      - name: benchmark_return
+        tests:
+          - not_null
+
+      - name: excess_return
+        tests:
+          - not_null
+
+      - name: rolling_12m_return
+        tests:
+          - not_null
+
+      - name: cumulative_return
+        tests:
+          - not_null
+
+
+  - name: int_allocation_current
+    description: Current allocation per sleeve from snapshot
+    columns:
+      - name: sleeve_id
+        tests:
+          - not_null
+
+      - name: ticker
+        tests:
+          - not_null
+
+      - name: weight
+        tests:
+          - not_null
+          
+
+  - name: dim_sleeve
+    description: Sleeve dimension table
+    columns:
+      - name: sleeve_id
+        tests:
+          - not_null
+          - unique
+
+      - name: sleeve_category
+        tests:
+          - not_null
+      
+
+
+  - name: dim_date
+    description: Date dimension
+    columns:
+      - name: date
+        tests:
+          - not_null
+          - unique
+
+
+  - name: dim_security
+    description: Security dimension
+    columns:
+      - name: ticker
+        tests:
+          - not_null
+          - unique
+
+
+
+  - name: fact_performance
+    description: Performance fact table
+    columns:
+
+      - name: sleeve_id
+        tests:
+          - not_null
+       
+
+      - name: month_date
+        tests:
+          - not_null
+
+      - name: sleeve_return
+        tests:
+          - not_null
+
+      - name: cumulative_return
+        tests:
+          - not_null
+
+
+  - name: fact_allocation
+    description: Allocation fact table
+    columns:
+
+      - name: sleeve_id
+        tests:
+          - not_null
+  
+
+      - name: ticker
+        tests:
+          - not_null
+      
+
+      - name: weight
+        tests:
+          - not_null
+
+
